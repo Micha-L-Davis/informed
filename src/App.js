@@ -1,5 +1,7 @@
-
 import React from 'react';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 let nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -59,30 +61,32 @@ class App extends React.Component {
       <>
         <h1>In-FORM-Ed {this.state.name}</h1>
         <h3>{this.state.word}</h3>
-        <form onSubmit={this.handleSubmit}>
-          <fieldset>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlID="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" onInput={this.handleName} />
+          </Form.Group>
 
-            <legend>Deep Ponderings</legend>
-
-            <label>Name
-              <input name="name" type="text" onInput={this.handleName} />
-            </label>
-
+          <Form.Group controlID="word">
             <label htmlFor="word">Word</label>
             <input name="word" id="word" type="text" onChange={this.handleWord} />
+          </Form.Group>
 
-            <select name="selected" onChange={this.handleSelect}>
+          <Form.Group controlID="selected" onChange={this.handleSelect}>
+            <Form.Select>
               <option value="all">All</option>
               <option value="even">Even</option>
               <option value="odd">Odd</option>
-            </select>
-            <button type="submit">Submit</button>
-          </fieldset>
-        </form>
+            </Form.Select>
+          </Form.Group>
 
-        <ul>
+          <Button type="submit">Submit</Button>
+
+        </Form>
+
+        <ListGroup>
           {listItems}
-        </ul>
+        </ListGroup>
       </>
     );
   }
